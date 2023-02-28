@@ -1,10 +1,11 @@
 // import { restaurantlist } from "../constants";
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from 'react-router-dom';
 import { filterData } from "../utils/helper";
 import useOnline from '../utils/useOnline';
+import UserContext from "../utils/UserContext";
 
 // const filterData = (searchText, allRestaurants) => {
 //   return allRestaurants.filter((restaurant) =>
@@ -12,13 +13,14 @@ import useOnline from '../utils/useOnline';
 //   );
 // };
 
-const Body = ({user}) => {
+const Body = () => {
   // let SearchTxt = "KFC";
 
   // SearchText is a local state variable
   const [searchText, setSearchText] = useState(""); // To create State variables
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const { user, setUser } = useContext(UserContext);
 
   console.log("render ()");
 
@@ -72,6 +74,21 @@ const Body = ({user}) => {
         >
           Search
         </button>
+
+        <input value={user.name} onChange={(e) => setUser({
+          ...user,
+          name:e.target.value, 
+          
+          }) 
+        }/>
+
+      <input value={user.email} onChange={(e) => setUser({
+          ...user,
+          email:e.target.value, 
+          
+          }) 
+        }/>
+
       </div>
 
       <div className="flex flex-wrap">

@@ -2948,7 +2948,8 @@ const AppLayout = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userContextDefault.default).Provider, {
             value: {
-                user: user
+                user: user,
+                setUser: setUser
             },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
@@ -32380,19 +32381,22 @@ var _reactRouterDom = require("react-router-dom");
 var _helper = require("../utils/helper");
 var _useOnline = require("../utils/useOnline");
 var _useOnlineDefault = parcelHelpers.interopDefault(_useOnline);
+var _userContext = require("../utils/UserContext");
+var _userContextDefault = parcelHelpers.interopDefault(_userContext);
 var _s = $RefreshSig$();
 // const filterData = (searchText, allRestaurants) => {
 //   return allRestaurants.filter((restaurant) =>
 //     restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
 //   );
 // };
-const Body = ({ user  })=>{
+const Body = ()=>{
     _s();
     // let SearchTxt = "KFC";
     // SearchText is a local state variable
     const [searchText, setSearchText] = (0, _react.useState)(""); // To create State variables
     const [filteredRestaurants, setFilteredRestaurants] = (0, _react.useState)([]);
     const [allRestaurants, setAllRestaurants] = (0, _react.useState)([]);
+    const { user , setUser  } = (0, _react.useContext)((0, _userContextDefault.default));
     console.log("render ()");
     (0, _react.useEffect)(()=>{
         console.log(" Use Effect Called");
@@ -32409,14 +32413,14 @@ const Body = ({ user  })=>{
         children: "Offline, Check your Internet Connection"
     }, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 46,
+        lineNumber: 48,
         columnNumber: 12
     }, undefined);
     // Early Return
     if (!allRestaurants) return null;
     return allRestaurants.length == 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 55,
+        lineNumber: 57,
         columnNumber: 5
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -32431,7 +32435,7 @@ const Body = ({ user  })=>{
                         onChange: (e)=>setSearchText(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 59,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -32443,13 +32447,35 @@ const Body = ({ user  })=>{
                         children: "Search"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 66,
+                        lineNumber: 68,
                         columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        value: user.name,
+                        onChange: (e)=>setUser({
+                                ...user,
+                                name: e.target.value
+                            })
+                    }, void 0, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 78,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        value: user.email,
+                        onChange: (e)=>setUser({
+                                ...user,
+                                email: e.target.value
+                            })
+                    }, void 0, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 85,
+                        columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 58,
+                lineNumber: 60,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -32458,7 +32484,7 @@ const Body = ({ user  })=>{
                     children: "No match found"
                 }, void 0, false, {
                     fileName: "src/components/Body.js",
-                    lineNumber: 80,
+                    lineNumber: 97,
                     columnNumber: 13
                 }, undefined) : filteredRestaurants.map((restaurant)=>{
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -32468,24 +32494,24 @@ const Body = ({ user  })=>{
                             user: user
                         }, void 0, false, {
                             fileName: "src/components/Body.js",
-                            lineNumber: 86,
+                            lineNumber: 103,
                             columnNumber: 15
                         }, undefined)
                     }, restaurant.data.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 85,
+                        lineNumber: 102,
                         columnNumber: 15
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 77,
+                lineNumber: 94,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(Body, "w8A4lnBy/q+R0bUg/CojI7v/i3g=", false, function() {
+_s(Body, "ZcEXG8/mbCf2zBwl5cw/Kq+tB1M=", false, function() {
     return [
         (0, _useOnlineDefault.default)
     ];
@@ -32500,7 +32526,7 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./RestaurantCard":"bMboU","react":"21dqq","./Shimmer":"g6ZGj","react-router-dom":"9xmpe","../utils/helper":"3GF3D","../utils/useOnline":"74Yls","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bMboU":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./RestaurantCard":"bMboU","react":"21dqq","./Shimmer":"g6ZGj","react-router-dom":"9xmpe","../utils/helper":"3GF3D","../utils/useOnline":"74Yls","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utils/UserContext":"c5vgB"}],"bMboU":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ffb1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
